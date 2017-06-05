@@ -21,20 +21,17 @@ class ArticleContainer extends Component {
             .then(res=>res.json()).then(data => {
               this.setState({
                 authorName: data.name
-              });
-              console.log(this.state)
+              })
         })
       }
     )
   }
-
   render() {
     return (
         <div>
           {/* Because it's an async request we need to handle the case where the data is loading */}
           {this.state.article ? <ArticlePresentation article={this.state.article} authorName={this.state.authorName} /> : <div>Loading...</div> }
         </div>
-
     );
   }
 }

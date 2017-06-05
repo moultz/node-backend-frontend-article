@@ -14,11 +14,12 @@ import ArticleFooter from './sections/ArticleFooter'
 // • Widget content (main body of content broken down in to components or “widgets”)
 // Divided into Header, Content and Footer (Footer just holds logos, but could hold social media sharing links)
 export default function ArticlePresentation(props) {
-
+  console.log(props)
 
   return (
       <div>
         <ArticleHeader
+            hero_images={props.article.acf.hero_images["0"].sizes}
             category={props.article.acf.category.name}
             authorName={props.authorName}
             title={props.article.title.rendered}
@@ -26,6 +27,7 @@ export default function ArticlePresentation(props) {
         />
         <ArticleContent
             sell={props.article.acf.sell}
+            widgets={props.article.acf.widgets}
         />
         <ArticleFooter/>
       </div>
