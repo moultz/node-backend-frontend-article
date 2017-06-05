@@ -3,7 +3,8 @@ import ArticlePresentation from "./ArticlePresentation";
 
 class ArticleContainer extends Component {
 
-  state = { article: {} };
+  //Initialise State to be empty
+  state = {};
 
   componentDidMount() {
     fetch('/article', {
@@ -29,7 +30,11 @@ class ArticleContainer extends Component {
 
   render() {
     return (
-      <ArticlePresentation/>
+        <div>
+          {/* Because it's an async request we need to handle the case where the data is loading */}
+          {this.state.article ? <ArticlePresentation article={this.state.article} authorName={this.state.authorName} /> : <div>Loading...</div> }
+        </div>
+
     );
   }
 }
